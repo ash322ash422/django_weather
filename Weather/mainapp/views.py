@@ -3,15 +3,15 @@ import json #to load json data to python dictionary
 import urllib.request # To make a request to api
 from django.views import View
 
+API_ID="892e6db9935e51f36b39a00987943b73" #I got it through email by signing up on their website
 class WeatherView(View):
     
     def post(self, request, *args, **kwargs):#override
         city = request.POST['city']
         
         # source contain json data from api
-        appid="892e6db9935e51f36b39a00987943b73" #I got it through email by signing up on their website
         source = urllib.request.urlopen(
-            'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + appid).read()
+            'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API_ID).read()
 
         # converting json data to dictionary
 
